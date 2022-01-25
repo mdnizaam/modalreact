@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import {Switch,Route} from 'react-router-dom'
+import Todo from './components/modal-components/Todo';
+import { Layout } from './components/posts-components/layout/Layout';
+import MainNavigation from './components/posts-components/layout/MainNavigation';
+import AddNewPosts from './pages/AddNewPosts';
+import AllPosts from './pages/AllPosts';
+import FavoritePosts from './pages/FavoritePosts';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     <Layout>
+      
+      <Switch>
+        <Route path="/" exact>
+          <AllPosts/>
+        </Route>
+        <Route path="/favoriteposts">
+          <FavoritePosts/>
+        </Route>
+        <Route path="/addnewposts">
+          <AddNewPosts/>
+        </Route>
+      </Switch>
+      </Layout>
+
+   
+      <Todo text={"Learn React course"}/>
+     
     </div>
   );
 }
